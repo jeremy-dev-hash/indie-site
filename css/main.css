@@ -23,7 +23,8 @@ body {
 /* Center panel */
 .panel {
     position: relative;
-    width: 500px;
+    width: 900px;
+    min-height: 900px;
     padding: 40px;
     background: #1c1c1c;
     border-radius: 16px;
@@ -55,9 +56,10 @@ body {
 /* content block */
 .content {
     display: flex;
-    gap: 40px;
+    gap: 80px;
     margin-top: 20px;
 }
+
 
 .front-cross {
     width: 300px;
@@ -86,3 +88,56 @@ body {
 .links a:hover {
     color: #fff;
 }
+
+.github-logo {
+    width: 250px;
+}
+
+.terminal-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 42px;
+    color: #00ff51;
+    text-shadow:
+    0 0 3px #00ff51,
+    0 0 4px #00ff51;
+    letter-spacing: 2px;
+}
+
+.crt {
+    position: relative;
+}
+
+/* Global flicker */
+@keyframes crt-flicker {
+    0%   { opacity: 0.98; }
+    5%   { opacity: 0.92; }
+    10%  { opacity: 1.0; }
+    15%  { opacity: 0.95; }
+    20%  { opacity: 1.0; }
+    100% { opacity: 0.98; }
+}
+
+
+/* Scanlines + subtle vignette */
+.crt::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.04) 0px,
+                              rgba(255,255,255,0.04) 1px,
+                              transparent 1px,
+                              transparent 3px
+    ),
+    radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0,0,0,0.35) 100%
+    );
+}
+
