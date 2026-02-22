@@ -1,8 +1,11 @@
 /* Reset default margin */
 body {
     margin: 0;
-    background: #111;
-    color: #eee;
+    background-image: url("../assets/img/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #aaa;
     font-family: sans-serif;
     height: 100vh;
     display: flex;
@@ -32,7 +35,7 @@ body {
     position: absolute;
     top: -20px;
     left: 20px;
-    background: #111;
+    background: transparent;
     padding: 5px 15px;
     font-weight: bold;
     border-radius: 8px;
@@ -41,13 +44,22 @@ body {
     font-size: 36px;
     letter-spacing: 2px;
 
-    color:#00aa11;
+    color:#000;
     text-shadow:
         0 0 1px #00ff51,
         0 0 3px #00ff51,
         0 0 3px #00ff45;
 
 }
+
+/* content block */
+.content {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+
 
 /* Navigation links */
 .links {
