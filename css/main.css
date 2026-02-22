@@ -59,6 +59,13 @@ body {
     margin-top: 20px;
 }
 
+.front-cross {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
 
 
 /* Navigation links */
