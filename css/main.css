@@ -7,10 +7,11 @@ body {
     background-repeat: no-repeat;
     color: #aaa;
     font-family: sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 40px 20px;
 }
 
 /* Main container */
@@ -24,8 +25,7 @@ body {
 .panel {
     position: relative;
     width: 900px;
-    min-height: 900px;
-    padding: 40px;
+    padding: 40px 40px 60px;
     background: #1c1c1c;
     border-radius: 16px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
@@ -50,7 +50,6 @@ body {
         0 0 1px #00ff51,
         0 0 3px #00ff51,
         0 0 3px #00ff45;
-
 }
 
 /* content block */
@@ -68,7 +67,14 @@ body {
     margin: 20px auto;
 }
 
-
+pre {
+    color: #00ff51;
+    text-shadow: 0 0 3px #00ff5160;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    display: inline-block;
+}
 
 /* Navigation links */
 .links {
@@ -82,6 +88,7 @@ body {
     text-decoration: none;
     color: #0ff;
     font-size: 18px;
+    font-family: 'IBM Plex Mono', monospace;
     transition: 0.2s;
 }
 
@@ -95,7 +102,7 @@ body {
 
 .terminal-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 42px;
+    font-size: 38px;
     color: #00ff51;
     text-shadow:
     0 0 3px #00ff51,
