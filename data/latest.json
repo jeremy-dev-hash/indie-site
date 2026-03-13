@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Example Item",
+    "category": "clothing",
+    "url": "catalog/clothing.html",
+    "date": "Mar 2026"
+  },
+  {
+    "name": "Another Item",
+    "category": "electronics",
+    "url": "catalog/electronics.html",
+    "date": "Mar 2026"
+  }
+]

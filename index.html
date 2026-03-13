@@ -3,31 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>~No Nothing~</title>
-
+  <title>The Catalog</title>
   <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 
 <body>
   <main class="enter">
     <div class="panel">
-      <div class="logo">NO NOTHING</div>
-      <div class="content">
-        <nav class="links">
-            <a href="index.html">Home</a>
-            <a href="blog/index.html">Blog</a>
-            <a href="links/index.html">Links</a>
-            <a href="forum/index.html">Forum</a>
-        </nav>
+      <div class="logo">THE CATALOG</div>
 
+      <div class="content">
+
+        <!-- LEFT: terminal nav block -->
+        <aside class="terminal-nav">
+          <div class="terminal-header">
+            <span class="t-title">nav.sh</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line dim">$ ls pages/</div>
+            <a href="catalog/index.html" class="t-link">
+              <span class="prompt">&gt;</span> catalog
+            </a>
+            <a href="about/index.html" class="t-link">
+              <span class="prompt">&gt;</span> about
+            </a>
+            <a href="blog/index.html" class="t-link">
+              <span class="prompt">&gt;</span> blog
+            </a>
+            <div class="t-line dim last">
+              <span class="blink">█</span>
+            </div>
+          </div>
+          <div class="terminal-footer">
+            <span class="status-dot"></span> system online
+          </div>
+        </aside>
+
+        <!-- RIGHT: welcome + recently added -->
         <div class="text-area">
-            <h1 class="terminal-title">~/Welcome!</h1>
-            <p>
-            I made this page to share ideas, websites, and products that
-            i've found to be intresting and useful.
-            </p>
-            <pre>                           (   )
+          <h1 class="terminal-title">~/Welcome!</h1>
+          <p class="intro">
+            A place to catalog things I've found interesting and useful.
+            Clothing, electronics, websites, and whatever else is worth keeping track of.
+          </p>
+
+          <pre class="ascii">                           (   )
                           (    )
                            (    )
                           (    )
@@ -45,12 +67,20 @@
                I_I|  I__I_____[]_|_[]_____I
                I_II  I__I_____[]_|_[]_____I
                I II__I  I     XXXXXXX     I
-            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~</pre>
+            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~</pre>
 
+          <!-- recently added section, populated by JS -->
+          <div class="recent-block">
+            <div class="recent-header">// recently added</div>
+            <ul class="recent-list" id="recent-list">
+              <li class="recent-loading">loading...</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </div>
   </main>
- </div>
-  <script src="js/main.js"></script>
+  <script src="js/recent.js"></script>
 </body>
-
 </html>
