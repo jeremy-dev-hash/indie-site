@@ -1,53 +1,60 @@
 /* ── Terminal nav block ── */
 .terminal-nav {
-    width: 200px;
+    width: 210px;
     flex-shrink: 0;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
+    border: 1px solid #252525;
+    border-radius: 12px;
     overflow: hidden;
     align-self: flex-start;
-    margin-top: 20px;
+    margin-top: 14px;
+    animation: fadeUp 0.7s 0.2s ease both;
+    transition: border-color 0.3s;
+}
+
+.terminal-nav:hover {
+    border-color: #00ff5130;
 }
 
 .terminal-header {
-    background: #252525;
-    padding: 8px 12px;
+    background: #1e1e1e;
+    padding: 9px 12px;
     display: flex;
     align-items: center;
     gap: 6px;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid #252525;
 }
 
 .t-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    opacity: 0.8;
+    flex-shrink: 0;
 }
 
 .t-title {
     font-size: 11px;
-    color: #444;
+    color: #3a3a3a;
     margin-left: 4px;
     font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.5px;
 }
 
 .terminal-body {
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    background: #141414;
+    gap: 11px;
+    background: #111;
 }
 
 .t-line {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    color: #444;
+    color: #333;
 }
 
-.t-line.last {
-    margin-top: 4px;
-}
+.t-line.last { margin-top: 2px; }
 
 .t-link {
     display: flex;
@@ -55,31 +62,51 @@
     gap: 8px;
     text-decoration: none;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    font-size: 13px;
     color: #0ff;
-    transition: color 0.15s, gap 0.15s;
+    transition: color 0.15s, gap 0.2s, text-shadow 0.2s;
+    position: relative;
 }
 
 .t-link:hover {
     color: #fff;
     gap: 12px;
+    text-shadow: 0 0 6px rgba(0,255,255,0.5);
 }
+
+/* Active indicator bar */
+.t-link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: #00ff51;
+    transition: width 0.2s;
+    opacity: 0.6;
+}
+
+.t-link:hover::after { width: 8px; }
 
 .prompt {
     color: #00ff51;
-    text-shadow: 0 0 4px #00ff51;
+    text-shadow: 0 0 5px #00ff51;
+    font-size: 11px;
 }
 
 .terminal-footer {
-    background: #141414;
-    border-top: 1px solid #2a2a2a;
+    background: #111;
+    border-top: 1px solid #1a1a1a;
     padding: 8px 16px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    color: #333;
+    color: #2d2d2d;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    letter-spacing: 0.5px;
 }
 
 .status-dot {
@@ -87,99 +114,132 @@
     height: 6px;
     border-radius: 50%;
     background: #00ff51;
-    box-shadow: 0 0 4px #00ff51;
-    animation: pulse 2s infinite;
+    box-shadow: 0 0 5px #00ff51, 0 0 10px #00ff5160;
+    animation: pulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
+    0%, 100% { opacity: 1;   box-shadow: 0 0 5px #00ff51, 0 0 10px #00ff5160; }
+    50%       { opacity: 0.3; box-shadow: 0 0 2px #00ff51; }
 }
 
 /* ── Text area ── */
 .text-area {
     flex: 1;
     min-width: 0;
+    animation: fadeUp 0.7s 0.1s ease both;
 }
 
 .intro {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 20px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 24px;
+    border-left: 2px solid #00ff5130;
+    padding-left: 14px;
 }
 
 /* ── ASCII art ── */
 .ascii {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     color: #00ff51;
-    text-shadow: 0 0 3px #00ff5160;
+    text-shadow: 0 0 4px #00ff5140;
     line-height: 1.4;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     overflow-x: auto;
+    animation: fadeUp 0.8s 0.25s ease both;
+    transition: text-shadow 0.4s;
+}
+
+.ascii:hover {
+    text-shadow: 0 0 6px #00ff5180, 0 0 14px #00ff5140;
 }
 
 /* ── Recently added ── */
 .recent-block {
-    border: 1px solid #2a2a2a;
+    border: 1px solid #222;
     border-radius: 10px;
     overflow: hidden;
+    animation: fadeUp 0.8s 0.3s ease both;
+    transition: border-color 0.3s;
+}
+
+.recent-block:hover {
+    border-color: #00ff5120;
 }
 
 .recent-header {
-    background: #252525;
-    border-bottom: 1px solid #2a2a2a;
+    background: #191919;
+    border-bottom: 1px solid #222;
     padding: 10px 16px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     color: #00ff51;
-    text-shadow: 0 0 3px #00ff5160;
-    letter-spacing: 1px;
+    text-shadow: 0 0 4px #00ff5150;
+    letter-spacing: 1.5px;
 }
 
 .recent-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    background: #141414;
+    background: #0e0e0e;
 }
 
 .recent-list li {
-    padding: 10px 16px;
+    padding: 11px 16px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    color: #555;
-    border-bottom: 1px solid #1e1e1e;
+    color: #484848;
+    border-bottom: 1px solid #161616;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.15s;
+    gap: 10px;
+    transition: background 0.15s, padding-left 0.15s;
 }
 
 .recent-list li:last-child { border-bottom: none; }
-.recent-list li:hover { background: #1a1a1a; }
+
+.recent-list li:hover {
+    background: #141414;
+    padding-left: 20px;
+}
 
 .recent-list li a {
     text-decoration: none;
     color: #0ff;
-    transition: color 0.15s;
+    transition: color 0.15s, text-shadow 0.15s;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.recent-list li a:hover { color: #fff; }
+
+.recent-list li a:hover {
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0,255,255,0.4);
+}
 
 .recent-cat {
-    color: #00ff5160;
-    font-size: 11px;
+    color: #00ff5150;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
 }
 
 .recent-date {
-    color: #333;
-    font-size: 11px;
+    color: #2a2a2a;
+    font-size: 10px;
+    flex-shrink: 0;
 }
 
 .recent-loading {
-    color: #333 !important;
+    color: #2a2a2a !important;
     font-style: italic;
 }
 
@@ -187,10 +247,18 @@
 .blink {
     animation: blink 1s step-end infinite;
     color: #00ff51;
-    text-shadow: 0 0 4px #00ff51;
+    text-shadow: 0 0 5px #00ff51;
 }
 
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50%       { opacity: 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+    .panel { padding: 40px 20px 48px; }
+    .content { flex-direction: column; gap: 28px; }
+    .terminal-nav { width: 100%; }
+    .ascii { font-size: 9px; }
 }

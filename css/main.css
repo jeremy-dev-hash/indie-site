@@ -1,82 +1,145 @@
-/* Reset default margin */
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
     margin: 0;
     background-image: url("../assets/img/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #aaa;
-    font-family: sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 20px;
+    padding: 40px 20px 60px;
+    overflow-x: hidden;
 }
 
-/* Main container */
+/* ── Scanline overlay ── */
+.scanlines {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0,0,0,0.06) 2px,
+        rgba(0,0,0,0.06) 4px
+    );
+    animation: scanroll 12s linear infinite;
+}
+
+@keyframes scanroll {
+    from { background-position: 0 0; }
+    to   { background-position: 0 400px; }
+}
+
+/* ── Main container ── */
 .enter {
     width: 100%;
     display: flex;
     justify-content: center;
+    animation: fadeUp 0.6s ease both;
 }
 
-/* Center panel */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Center panel ── */
 .panel {
     position: relative;
     width: 900px;
-    padding: 40px 40px 60px;
-    background: #1c1c1c;
+    padding: 48px 44px 64px;
+    background: rgba(20, 20, 20, 0.97);
     border-radius: 16px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid #2a2a2a;
+    box-shadow:
+        0 0 0 1px rgba(0,255,81,0.04),
+        0 0 40px rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
-/* Logo overlapping the panel */
+/* Panel glow pulse on load */
+.panel::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,255,81,0.08);
+    animation: panelGlow 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes panelGlow {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+}
+
+/* ── Logo with glitch ── */
 .logo {
     position: absolute;
-    top: -20px;
-    left: 20px;
-    background: transparent;
-    padding: 5px 15px;
-    font-weight: bold;
-    border-radius: 8px;
-
-    font-family: 'VT323', MONOSPACE;
-    font-size: 36px;
-    letter-spacing: 2px;
-
-    color:#000;
+    top: -22px;
+    left: 24px;
+    padding: 4px 18px;
+    font-family: 'VT323', monospace;
+    font-size: 38px;
+    letter-spacing: 3px;
+    color: #00ff51;
     text-shadow:
-        0 0 1px #00ff51,
-        0 0 3px #00ff51,
-        0 0 3px #00ff45;
+        0 0 4px #00ff51,
+        0 0 12px #00ff5180,
+        0 0 24px #00ff5140;
+    animation: glitch 6s infinite;
+    cursor: default;
+    user-select: none;
 }
 
-/* content block */
+/* Glitch keyframes */
+@keyframes glitch {
+    0%,  94%, 100% {
+        text-shadow: 0 0 4px #00ff51, 0 0 12px #00ff5180, 0 0 24px #00ff5140;
+        transform: none;
+        clip-path: none;
+    }
+    95% {
+        text-shadow: -2px 0 #ff003c, 2px 0 #00f0ff, 0 0 4px #00ff51;
+        transform: skewX(-4deg);
+    }
+    96% {
+        text-shadow: 2px 0 #ff003c, -2px 0 #00f0ff, 0 0 4px #00ff51;
+        transform: skewX(4deg);
+    }
+    97% {
+        text-shadow: 0 0 4px #00ff51, 0 0 12px #00ff5180;
+        transform: none;
+    }
+}
+
+/* ── content block ── */
 .content {
     display: flex;
     gap: 80px;
     margin-top: 20px;
 }
 
-
-.front-cross {
-    width: 300px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-}
-
+/* ── pre / ascii ── */
 pre {
     color: #00ff51;
-    text-shadow: 0 0 3px #00ff5160;
+    text-shadow: 0 0 3px #00ff5150;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
     display: inline-block;
 }
 
-/* Navigation links */
+/* ── Navigation links (for links page) ── */
 .links {
     display: flex;
     flex-direction: column;
@@ -92,20 +155,26 @@ pre {
     transition: 0.2s;
 }
 
-.links a:hover {
-    color: #fff;
-}
+.links a:hover { color: #fff; }
 
-.github-logo {
-    width: 250px;
-}
+.github-logo { width: 250px; }
 
+/* ── Terminal title ── */
 .terminal-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 38px;
+    font-size: 34px;
+    font-weight: 600;
     color: #00ff51;
     text-shadow:
-    0 0 3px #00ff51,
-    0 0 4px #00ff51;
-    letter-spacing: 2px;
+        0 0 4px #00ff51,
+        0 0 16px #00ff5160;
+    letter-spacing: 1px;
+    margin: 0 0 14px;
+    animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.title-path {
+    color: #00ff5170;
+    text-shadow: none;
+    font-weight: 400;
 }

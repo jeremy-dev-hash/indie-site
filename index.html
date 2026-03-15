@@ -12,13 +12,16 @@
 <body>
   <main class="enter">
     <div class="panel">
-      <div class="logo">THE CATALOG</div>
+      <div class="logo" data-text="THE CATALOG">THE CATALOG</div>
 
       <div class="content">
 
         <!-- LEFT: terminal nav block -->
         <aside class="terminal-nav">
           <div class="terminal-header">
+            <span class="t-dot" style="background:#ff5f57"></span>
+            <span class="t-dot" style="background:#febc2e"></span>
+            <span class="t-dot" style="background:#28c840"></span>
             <span class="t-title">nav.sh</span>
           </div>
           <div class="terminal-body">
@@ -43,7 +46,7 @@
 
         <!-- RIGHT: welcome + recently added -->
         <div class="text-area">
-          <h1 class="terminal-title">~/Welcome!</h1>
+          <h1 class="terminal-title"><span class="title-path">~/</span>Welcome!</h1>
           <p class="intro">
             A place to catalog things I've found interesting and useful.
             Clothing, electronics, websites, and whatever else is worth keeping track of.
@@ -81,6 +84,10 @@
       </div>
     </div>
   </main>
+
+  <!-- scanline overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
   <script src="js/recent.js"></script>
 </body>
 </html>
